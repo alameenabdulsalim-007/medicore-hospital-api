@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Hospital Dashboard</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body style="background:#f5f7fa;">
+
+<div class="container-fluid">
+
+<div class="row">
+
+<!-- Sidebar -->
+
+<div class="col-md-2 bg-dark text-white min-vh-100 p-3">
+
+<h4>MediCore</h4>
+<hr>
+
+<ul class="nav flex-column">
+
+<li class="nav-item mb-2">
+<a class="nav-link text-white fw-bold bg-secondary rounded p-2" href="/dashboard/">Dashboard</a>
+</li>
+
+<li class="nav-item mb-2">
+<a class="nav-link text-white" href="/doctors/">Doctors</a>
+</li>
+
+<li class="nav-item mb-2">
+<a class="nav-link text-white" href="/patients/">Patients</a>
+</li>
+
+<li class="nav-item mb-2">
+<a class="nav-link text-white" href="/appointments/">Appointments</a>
+</li>
+
+<li class="nav-item mb-2">
+<a class="nav-link text-white" href="/admin/">Admin</a>
+</li>
+
+</ul>
+
+</div>
+
+<!-- Main Content -->
+
+<div class="col-md-10 p-4">
+
+<h2 class="mb-4">Hospital Dashboard</h2>
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">MediCore</a>
+
+    <div>
+      <a class="btn btn-outline-light btn-sm me-2" href="/dashboard/">Dashboard</a>
+      <a class="btn btn-outline-light btn-sm me-2" href="/admin/">Admin</a>
+      <a class="btn btn-outline-light btn-sm" href="/">Home</a>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container mt-5">
+
+<h2 class="mb-4 fw-bold">Hospital Dashboard</h2>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+<div class="card shadow-sm border-0">
+<div class="card-body text-center">
+<h6 class="text-muted">Total Doctors</h6>
+<h2 class="text-dark">{{ doctors }}</h2>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card shadow-sm border-0">
+<div class="card-body text-center">
+<h6 class="text-muted">Total Patients</h6>
+<h2 class="text-dark">{{ patients }}</h2>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card shadow-sm border-0">
+<div class="card-body text-center">
+<h6 class="text-muted">Appointments</h6>
+<h2 class="text-dark">{{ appointments }}</h2>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+<hr class="my-5">
+
+<h4 class="mb-3">Recent Appointments</h4>
+
+<table class="table table-striped">
+
+<thead>
+<tr>
+<th>Patient</th>
+<th>Doctor</th>
+<th>Date</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for a in appointments %}
+
+<tr>
+<td>{{ a.patient.name }}</td>
+<td>{{ a.doctor.name }}</td>
+<td>{{ a.appointment_date }}</td>
+<td>{{ a.status }}</td>
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

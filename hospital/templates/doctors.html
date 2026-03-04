@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Doctors</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body style="background:#f5f7fa;">
+
+<div class="container-fluid">
+
+<div class="row">
+
+<!-- Sidebar -->
+
+<div class="col-md-2 bg-dark text-white min-vh-100 p-3">
+
+<h4>MediCore</h4>
+<hr>
+
+<ul class="nav flex-column">
+
+<li class="nav-item mb-2">
+<a class="nav-link text-white" href="/dashboard/">Dashboard</a>
+</li>
+
+<li class="nav-item mb-2">
+<a class="nav-link text-white fw-bold bg-secondary rounded p-2" href="/doctors/">Doctors</a>
+</li>
+
+<li class="nav-item mb-2">
+<a class="nav-link text-white" href="/patients/">Patients</a>
+</li>
+
+<li class="nav-item mb-2">
+<a class="nav-link text-white" href="/appointments/">Appointments</a>
+</li>
+
+<li class="nav-item mb-2">
+<a class="nav-link text-white" href="/admin/">Admin</a>
+</li>
+
+</ul>
+
+</div>
+
+<!-- Main Content -->
+
+<div class="col-md-10 p-4">
+
+<h2 class="mb-4 fw-bold">Doctors</h2>
+
+<table class="table table-striped shadow-sm">
+
+<thead>
+<tr>
+<th>Name</th>
+<th>Specialization</th>
+<th>Phone</th>
+<th>Email</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for doctor in doctors %}
+
+<tr>
+<td>{{ doctor.name }}</td>
+<td>{{ doctor.specialization }}</td>
+<td>{{ doctor.phone }}</td>
+<td>{{ doctor.email }}</td>
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

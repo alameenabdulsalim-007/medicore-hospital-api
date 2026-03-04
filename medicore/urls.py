@@ -14,6 +14,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from hospital.views import appointments
+from hospital.views import patients
+from hospital.views import doctors
+from hospital.views import dashboard
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import (
@@ -26,4 +30,8 @@ urlpatterns = [
     path('api/', include('hospital.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('dashboard/', dashboard),
+    path('doctors/', doctors),
+    path('patients/', patients),
+    path('appointments/', appointments),
 ]
