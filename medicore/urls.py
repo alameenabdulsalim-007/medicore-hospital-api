@@ -14,6 +14,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from hospital.views import book_appointment
+from hospital.views import login_view, logout_view
 from hospital.views import appointments
 from hospital.views import patients
 from hospital.views import doctors
@@ -34,4 +36,7 @@ urlpatterns = [
     path('doctors/', doctors),
     path('patients/', patients),
     path('appointments/', appointments),
+    path('', login_view),
+    path('logout/', logout_view),
+    path('book-appointment/', book_appointment),
 ]
