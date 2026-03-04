@@ -35,6 +35,18 @@ text-decoration:none;
 background:#495057;
 }
 
+
+@media (max-width:768px){
+
+.sidebar{
+position:fixed;
+width:220px;
+z-index:1000;
+}
+
+}
+
+
 </style>
 
 </head>
@@ -47,7 +59,7 @@ background:#495057;
 
 <!-- Sidebar -->
 
-<div class="col-md-2 bg-dark text-white min-vh-100 p-3">
+<div class="col-lg-2 col-md-3 bg-dark text-white min-vh-100 p-3">
 
 <h4 class="fw-bold text-center mb-4">MediCore</h4>
 
@@ -116,7 +128,7 @@ background:#495057;
 
 <!-- Main Content -->
 
-<div class="col-md-10 p-4">
+<div class="col-lg-10 col-md-9 p-4">
 
 {% block content %}
 
