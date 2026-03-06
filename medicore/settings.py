@@ -68,20 +68,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'medicore.wsgi.application'
 
 
-# Database (MySQL)
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'medicore',
-        'USER': 'root',
-        'PASSWORD': 'root123',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
 
-# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -98,7 +92,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -108,7 +102,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JS, Images)
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
@@ -116,12 +110,12 @@ STATICFILES_DIRS = [
 ]
 
 
-# Media files (uploaded images)
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
 
 
-# Django Rest Framework
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -129,12 +123,12 @@ REST_FRAMEWORK = {
 }
 
 
-# JWT Settings
+
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
 
 
-# Default primary key field
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
