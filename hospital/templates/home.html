@@ -1,0 +1,500 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>MediCore Hospital</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+html{
+scroll-behavior:smooth;
+}
+
+.card:hover{
+transform:translateY(-6px);
+transition:0.3s;
+}
+
+.doctor-img{
+height:300px;
+width:100%;
+object-fit:cover;
+object-position:top;
+border-top-left-radius:8px;
+border-top-right-radius:8px;
+}
+
+.doctor-card:hover{
+transform:translateY(-6px);
+transition:0.3s;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+
+<div class="container-fluid">
+
+<a class="navbar-brand d-flex align-items-center ms-2" href="#">
+<img src="{% static 'hospital/medicore.png' %}" height="70" style="margin-right:10px;">
+<span style="font-size:26px;font-weight:600;color:white;">MediCore</span>
+</a>
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+
+<ul class="navbar-nav">
+
+<li class="nav-item">
+<a class="nav-link" href="#about">About</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#services">Services</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#doctors">Doctors</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#contact">Contact</a>
+</li>
+
+<li class="nav-item ms-3">
+<a href="/login/" class="btn btn-dark">Staff Login</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- HERO SECTION -->
+
+<section class="bg-light p-5">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-md-6">
+
+<h1 class="display-5 fw-bold">Welcome to MediCore Hospital</h1>
+
+<p class="lead">
+Advanced healthcare with trusted doctors and modern technology.
+</p>
+
+
+
+</div>
+
+<div class="col-md-6">
+
+<img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3"
+class="img-fluid rounded">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about" class="bg-light p-5"
+style="background: #35485c;">
+
+<div class="container">
+
+<h2 class="text-center mb-4">About Our Hospital</h2>
+
+<p class="text-center">
+MediCore Hospital provides high quality healthcare services with experienced doctors
+and modern medical facilities. Our goal is to deliver excellent patient care and
+efficient hospital management.
+</p>
+
+</div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section id="services" class="bg-light p-5">
+
+<div class="container">
+
+<h2 class="text-center mb-4">Our Services</h2>
+
+<div class="row text-center">
+
+<div class="col-md-4">
+
+<div class="card shadow-sm p-4">
+
+<h4>🚑</h4>
+
+<h5>Emergency Care</h5>
+
+<p>24/7 emergency medical services.</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card shadow-sm p-4">
+
+<h4>👨‍⚕️</h4>
+
+<h5>Doctor Consultation</h5>
+
+<p>Professional doctors for every department.</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card shadow-sm p-4">
+
+<h4>🩺</h4>
+
+<h5>Patient Management</h5>
+
+<p>Efficient patient records and treatment.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="bg-dark text-white text-center p-5">
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-3">
+<h2>50+</h2>
+<p>Doctors</p>
+</div>
+
+<div class="col-md-3">
+<h2>5000+</h2>
+<p>Patients Treated</p>
+</div>
+
+<div class="col-md-3">
+<h2>24/7</h2>
+<p>Emergency Service</p>
+</div>
+
+<div class="col-md-3">
+<h2>15+</h2>
+<p>Departments</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- DOCTORS -->
+
+<section id="doctors" class="py-5 bg-light">
+
+<div class="container">
+
+<h2 class="text-center mb-5">Our Doctors</h2>
+
+<div class="row">
+
+{% for doctor in doctors %}
+
+<div class="col-md-4 mb-4">
+
+<div class="card shadow-sm text-center">
+
+<img src="{{ doctor.image.url }}" class="card-img-top doctor-img">
+
+<div class="card-body">
+
+<h5 class="fw-bold">{{ doctor.name }}</h5>
+
+<p class="text-muted">{{ doctor.specialization }}</p>
+
+</div>
+
+</div>
+
+</div>
+
+{% empty %}
+
+<p class="text-center">No doctors available</p>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact" class="bg-dark text-white text-center p-4">
+
+<h4>Contact Us</h4>
+
+<p>Email: medicorehospital@gmail.com</p>
+
+<p>Phone: +91 7994790284</p>
+
+<p>Location: Kerala, India</p>
+
+</section>
+
+<!-- PROFESSIONAL FOOTER -->
+
+<footer class="bg-dark text-white pt-5 pb-3">
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-4">
+
+<h5>MediCore Hospital</h5>
+
+<p>
+Providing advanced healthcare services with modern technology,
+experienced doctors, and patient-focused treatment.
+</p>
+
+</div>
+
+<div class="col-md-4">
+
+<h5>Quick Links</h5>
+
+<ul class="list-unstyled">
+
+<li><a href="#about" class="text-white text-decoration-none">About</a></li>
+<li><a href="#services" class="text-white text-decoration-none">Services</a></li>
+<li><a href="#doctors" class="text-white text-decoration-none">Doctors</a></li>
+<li><a href="#contact" class="text-white text-decoration-none">Contact</a></li>
+
+</ul>
+
+</div>
+
+<div class="col-md-4">
+
+<h5>Contact</h5>
+
+<p>
+📧 medicorehospital@gmail.com <br>
+📞 +91 7994790284 <br>
+📍 Kerala, India
+</p>
+
+</div>
+
+</div>
+
+<hr>
+
+<div class="text-center">
+
+<p class="mb-0">
+© 2026 MediCore Hospital. All Rights Reserved.
+</p>
+
+</div>
+
+</div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

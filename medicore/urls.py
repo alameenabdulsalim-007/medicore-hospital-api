@@ -14,29 +14,46 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from hospital.views import book_appointment
-from hospital.views import login_view, logout_view
-from hospital.views import appointments
-from hospital.views import patients
-from hospital.views import doctors
-from hospital.views import dashboard
 from django.contrib import admin
 from django.urls import path, include
+
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
 
+from hospital.views import home, dashboard, doctors, patients, appointments, logout_view, book_appointment, login_view
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+
+    # Homepage
+    path('', home, name='home'),
+
+    # Authentication
+    path('login/', login_view, name='login'),
+    path('logout/', logout_view, name='logout'),
+
+    # Dashboard
+    path('dashboard/', dashboard, name='dashboard'),
+
+    # Pages
+    path('doctors/', doctors, name='doctors'),
+    path('patients/', patients, name='patients'),
+    path('appointments/', appointments, name='appointments'),
+
+    # Book appointment
+    path('book-appointment/', book_appointment, name='book'),
+
+    # API
     path('api/', include('hospital.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('dashboard/', dashboard),
-    path('doctors/', doctors),
-    path('patients/', patients),
-    path('appointments/', appointments),
-    path('', login_view),
-    path('logout/', logout_view),
-    path('book-appointment/', book_appointment),
+
+    # Admin
+    path('admin/', admin.site.urls),
+
 ]
+from django.conf import settings
+from django.conf.urls.static import static
+# Media files (images)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

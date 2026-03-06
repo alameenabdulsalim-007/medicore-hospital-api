@@ -37,6 +37,13 @@
 {% for doctor in doctors %}
 
 <tr>
+<td>
+{% if doctor.image %}
+<img src="{{ doctor.image.url }}" width="200" height="70" style="object-fit:cover; border-radius:50%;">
+{% else %}
+<img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2" width="70" height="70" style="object-fit:cover; border-radius:50%;">
+{% endif %}
+</td>
 <td>{{ doctor.name }}</td>
 <td>{{ doctor.specialization }}</td>
 <td>{{ doctor.phone }}</td>
