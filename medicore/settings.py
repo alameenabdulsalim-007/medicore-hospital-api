@@ -109,6 +109,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "hospital/static",
 ]
 
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
 MEDIA_URL = '/media/'
